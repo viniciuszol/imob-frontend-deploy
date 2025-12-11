@@ -1,0 +1,55 @@
+# ──────────────────────────────────────────
+# LOGS
+# ──────────────────────────────────────────
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ──────────────────────────────────────────
+# DEPENDENCIES
+# ──────────────────────────────────────────
+node_modules/
+
+# ──────────────────────────────────────────
+# BUILD OUTPUT
+# ──────────────────────────────────────────
+dist/
+dist-ssr/
+*.local
+
+# ──────────────────────────────────────────
+# ENVIRONMENT VARIABLES (IMPORTANTÍSSIMO)
+# NÃO SUBIR .env PARA O GITHUB
+# ──────────────────────────────────────────
+.env
+.env.*
+
+# Se quiser manter um exemplo:
+# !.env.example
+
+# ──────────────────────────────────────────
+# EDITOR DIRECTORIES / FILES
+# ──────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ──────────────────────────────────────────
+# TYPESCRIPT BUILD INFO
+# ──────────────────────────────────────────
+*.tsbuildinfo
+
+# ──────────────────────────────────────────
+# OPTIONAL VITE/PLUGIN TEMP FILES
+# ──────────────────────────────────────────
+*.svg?import
