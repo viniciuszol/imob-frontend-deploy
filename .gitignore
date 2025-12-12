@@ -26,6 +26,7 @@ dist-ssr/
 # NÃO SUBIR .env PARA O GITHUB
 # ──────────────────────────────────────────
 .env
+.env.production
 .env.*
 
 # Se quiser manter um exemplo:
