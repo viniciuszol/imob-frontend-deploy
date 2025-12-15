@@ -3,7 +3,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import { loginRequest } from "../api/auth";
 import { useAuth } from "../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
   const { login } = useAuth();
@@ -22,11 +22,8 @@ export default function Login() {
     setError("");
 
     try {
-      const data = await loginRequest(form.email, form.password);
-
+      await loginRequest(form.email, form.password);
       await login(form.email, form.password);
-
-
       navigate("/empresas");
     } catch {
       setError("Email ou senha inválidos");
@@ -45,7 +42,6 @@ export default function Login() {
         <p className="text-muted text-center -mt-4">Acesse sua conta</p>
 
         <Input label="Email" name="email" type="email" value={form.email} onChange={handleChange} />
-
         <Input label="Senha" name="password" type="password" value={form.password} onChange={handleChange} />
 
         {error && <p className="text-red-400 text-sm text-center">{error}</p>}
@@ -53,6 +49,13 @@ export default function Login() {
         <Button disabled={loading}>
           {loading ? "Entrando..." : "Entrar"}
         </Button>
+
+        <p className="text-sm text-center text-muted">
+          Não tem conta?{" "}
+          <Link to="/register" className="text-blue-400 hover:underline">
+            Criar conta
+          </Link>
+        </p>
       </form>
     </div>
   );

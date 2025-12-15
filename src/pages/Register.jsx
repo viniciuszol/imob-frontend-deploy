@@ -28,7 +28,7 @@ export default function Register() {
       await registerRequest(form.nome, form.email, form.password);
 
       // Após registrar, manda pro login
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       setError("Erro ao criar conta. Verifique os dados.");
     }
