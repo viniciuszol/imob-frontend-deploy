@@ -16,9 +16,6 @@ frontend:
       - node_modules/**/*
 
 rewrites:
-  - source: /api/<*>
-    target: http://54.207.198.211:8000/<*>
-    status: 200
   - source: /<*>
     target: /index.html
     status: 200

@@ -8,6 +8,7 @@ import EmpresaDetalhes from "../pages/EmpresaDetalhes";
 import Ativos from "../pages/Ativos";
 import ImportarEmpresa from "../pages/ImportarEmpresa";
 import Movimentacoes from "../pages/Movimentacoes";
+import { registerRequest } from "../api/auth";
 
 // 🔹 Subpáginas dentro de /pages/investimentos/
 import OverviewPage from "../pages/investimentos/OverviewPage";
@@ -25,6 +26,13 @@ export default function AppRouter() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+
+        <Route 
+          path="/register" 
+          element={
+            <Register 
+          />} 
+        />
 
         <Route
           path="/empresas"

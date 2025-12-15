@@ -16,8 +16,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Registrar
-  const register = async (email, password) => {
-    await registerRequest(email, password);
+  const register = async (nome, email, password) => {
+    await registerRequest(nome, email, password);
   };
 
   // Logout
