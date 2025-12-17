@@ -1,6 +1,13 @@
-// src/components/Navbar.jsx
 import { useNavigate } from "react-router-dom";
-import { User2, Home, Building2, LineChart, TrendingUp, LogOut } from "lucide-react";
+import {
+  User2,
+  Home,
+  Building2,
+  LineChart,
+  TrendingUp,
+  Percent,
+  LogOut
+} from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Navbar() {
@@ -38,19 +45,29 @@ export default function Navbar() {
           <LineChart size={18} /> Movimentações
         </button>
 
-        {/* NOVA ABA: INVESTIMENTOS */}
         <button
           onClick={() => navigate("/investimentos")}
           className="hover:text-white transition flex items-center gap-1"
         >
           <TrendingUp size={18} /> Investimentos
         </button>
+
+        {/* NOVA ABA: CDI */}
+        <button
+          onClick={() => navigate("/cdi")}
+          className="hover:text-white transition flex items-center gap-1"
+        >
+          <Percent size={18} /> CDI
+        </button>
       </nav>
 
       {/* DIREITA: Logout */}
       <div>
         <button
-          onClick={() => { logout(); navigate("/"); }}
+          onClick={() => {
+            logout();
+            navigate("/");
+          }}
           className="flex items-center gap-2 bg-red-600/70 px-4 py-2 rounded-lg hover:bg-red-700 transition shadow"
         >
           <LogOut size={18} /> Sair

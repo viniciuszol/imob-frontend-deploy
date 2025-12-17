@@ -28,13 +28,6 @@ export default function SubNavInvestimentos() {
       </NavLink>
 
       <NavLink
-        to="/investimentos/cdi"
-        className={({ isActive }) => `${base} ${isActive ? active : inactive}`}
-      >
-        <TrendingUp size={18} /> Evolução CDI
-      </NavLink>
-
-      <NavLink
         to="/investimentos/ativos"
         className={({ isActive }) => `${base} ${isActive ? active : inactive}`}
       >

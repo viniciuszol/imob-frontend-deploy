@@ -61,6 +61,11 @@ export const AtivoProvider = ({ children }) => {
     }
   };
 
+  const reativarAtivo = async (id) => {
+    await updateAtivo(id, { ativo: true }, token);
+    await carregarAtivos();
+  };
+
   useEffect(() => { carregarAtivos(); }, [token]);
   useEffect(() => { carregarEmpresas(); }, [token]);
 

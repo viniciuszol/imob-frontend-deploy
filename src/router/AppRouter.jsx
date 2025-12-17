@@ -9,7 +9,9 @@ import Ativos from "../pages/Ativos";
 import ImportarEmpresa from "../pages/ImportarEmpresa";
 import Movimentacoes from "../pages/Movimentacoes";
 import Register from "../pages/Register";
-// 🔹 Subpáginas dentro de /pages/investimentos/
+import CDIPage from "../pages/CDI";
+
+// 🔹 Subpáginas de investimentos
 import OverviewPage from "../pages/investimentos/OverviewPage";
 import ComparativoPage from "../pages/investimentos/ComparativoPage";
 import EvolucaoCDIPage from "../pages/investimentos/EvolucaoCDIPage";
@@ -26,12 +28,7 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<Login />} />
 
-        <Route 
-          path="/register" 
-          element={
-            <Register />
-          } 
-        />
+        <Route path="/register" element={<Register />} />
 
         <Route
           path="/empresas"
@@ -74,6 +71,17 @@ export default function AppRouter() {
           }
         />
 
+        {/* ================= CDI ================= */}
+        <Route
+          path="/cdi"
+          element={
+            <PrivateRoute>
+              <CDIPage />
+            </PrivateRoute>
+          }
+        />
+
+        {/* ================= INVESTIMENTOS ================= */}
         <Route
           path="/investimentos"
           element={
@@ -83,7 +91,6 @@ export default function AppRouter() {
           }
         />
 
-        {/* 🔹 Comparativo Ativo x CDI */}
         <Route
           path="/investimentos/comparativo"
           element={
@@ -93,7 +100,6 @@ export default function AppRouter() {
           }
         />
 
-        {/* 🔹 Evolução do CDI */}
         <Route
           path="/investimentos/cdi"
           element={
@@ -102,7 +108,7 @@ export default function AppRouter() {
             </PrivateRoute>
           }
         />
-        {/* 🔹 Comparativo Ativo x CDI */}
+
         <Route
           path="/investimentos/ativos"
           element={

@@ -4,6 +4,7 @@ import { EmpresaProvider } from "./contexts/EmpresaContext";
 import { AtivoProvider } from "./contexts/AtivoContext";
 import { MovimentacaoProvider } from "./contexts/MovimentacaoContext";
 import { InvestimentosProvider } from "./contexts/InvestimentosContext";
+import { CDIProvider } from "./contexts/CDIContext";
 
 import AppRouter from "./router/AppRouter";
 
@@ -13,9 +14,11 @@ export default function App() {
       <EmpresaProvider>
         <AtivoProvider>
           <MovimentacaoProvider>
-            <InvestimentosProvider>
-              <AppRouter />
-            </InvestimentosProvider>
+            <CDIProvider>
+              <InvestimentosProvider>
+                <AppRouter />
+              </InvestimentosProvider>
+            </CDIProvider>
           </MovimentacaoProvider>
         </AtivoProvider>
       </EmpresaProvider>

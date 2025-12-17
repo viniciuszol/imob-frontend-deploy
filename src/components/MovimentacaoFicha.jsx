@@ -8,7 +8,8 @@ export default function MovimentacaoFicha({ movimentacao, readOnly, onEdit, onSu
     setFormData({ ...movimentacao });
   }, [movimentacao]);
 
-  const handleChange = (key, value) => setFormData({ ...formData, [key]: value });
+  const handleChange = (key, value) =>
+    setFormData({ ...formData, [key]: value });
 
   const rowStyle = "flex justify-between py-1";
 
@@ -19,10 +20,33 @@ export default function MovimentacaoFicha({ movimentacao, readOnly, onEdit, onSu
 
   const formatBRL = (value) =>
     typeof value === "number"
-      ? `${getTipo(value) === "saida" ? "-" : "+"} R$ ${Math.abs(value).toLocaleString("pt-BR", {
-          minimumFractionDigits: 2,
-        })}`
+      ? `${getTipo(value) === "saida" ? "-" : "+"} R$ ${Math.abs(value).toLocaleString(
+          "pt-BR",
+          { minimumFractionDigits: 2 }
+        )}`
       : value;
+
+  /* ===== MÁSCARA R$ ===== */
+
+  const formatBRLInput = (value) => {
+    if (value == null || value === "") return "";
+    const num = Number(value);
+    if (isNaN(num)) return "";
+    return `R$ ${num.toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+    })}`;
+  };
+
+  const parseBRLInput = (value) => {
+    if (!value) return 0;
+    return Number(
+      value
+        .replace(/\s/g, "")
+        .replace("R$", "")
+        .replace(/\./g, "")
+        .replace(",", ".")
+    );
+  };
 
   const formatDateInput = (date) => (date ? date.slice(0, 10) : "");
 
@@ -51,10 +75,13 @@ export default function MovimentacaoFicha({ movimentacao, readOnly, onEdit, onSu
             )
           ) : key === "valor" ? (
             <input
-              type="number"
+              type="text"
               className="bg-gray-700 text-white px-2 py-1 rounded-md w-full ml-2"
-              value={formData[key] ?? 0}
-              onChange={(e) => handleChange(key, parseFloat(e.target.value))}
+              value={formatBRLInput(formData[key])}
+              onChange={(e) =>
+                handleChange(key, parseBRLInput(e.target.value))
+              }
+              inputMode="decimal"
             />
           ) : key === "data_movimentacao" ? (
             <input
@@ -80,7 +107,7 @@ export default function MovimentacaoFicha({ movimentacao, readOnly, onEdit, onSu
             onClick={() => onEdit(movimentacao)}
             className="bg-yellow-600 px-4 py-2 rounded-lg hover:bg-yellow-700 flex items-center gap-2"
           >
-            <Edit size={16} /> Editar
+            <Edit size={16} />
           </button>
         )}
 
@@ -89,7 +116,7 @@ export default function MovimentacaoFicha({ movimentacao, readOnly, onEdit, onSu
             onClick={() => onSubmit && onSubmit(formData)}
             className="bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 flex items-center gap-2"
           >
-            <Check size={16} /> Salvar
+            <Check size={16} />
           </button>
         )}
       </div>
